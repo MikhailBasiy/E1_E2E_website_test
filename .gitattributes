@@ -1,0 +1,7 @@
+# Устанавливаем окончания строк в стиле Unix (LF) для определённых типов файлов
+*.py     text eol=lf
+*.md     text eol=lf
+*.json   text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.txt    text eol=lf
