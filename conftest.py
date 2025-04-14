@@ -5,7 +5,7 @@ from selenium import webdriver
 @pytest.fixture(scope="session")
 def browser():
     options = webdriver.ChromeOptions()
-    # options.page_load_strategy = 'none'
+    options.page_load_strategy = 'none'
     # options.add_argument('--ignore-certificate-errors')   # Check if it works
     # options.add_argument('--ignore-ssl-errors')           # Check if it works
     options.add_argument('--blink-settings=imagesEnabled=false')

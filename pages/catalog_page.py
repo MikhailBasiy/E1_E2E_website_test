@@ -11,7 +11,22 @@ from pages.base_page import BasePage
 
 class CatalogPage(BasePage):
     def __init__(self, browser):
-        super().__init__(browser, "https://www.e-1.ru/catalog/vse_shkafy_kupe/")
+        super().__init__(
+            browser, 
+            "https://www.e-1.ru/catalog/vse_shkafy_kupe/",
+            (
+                By.XPATH, 
+                "//div[@class='price font-bold font_mxs'//span[@class='price_value']"
+            )
+        )
+
+    def get_catalog_items(self):
+        return self.find_all(
+            10, 
+            By.XPATH, 
+            "//div[@class='price font-bold font_mxs']//span[@class='price_value']"
+        )
+         
     
     # def next_page(self):
     #     try:
@@ -19,7 +34,4 @@ class CatalogPage(BasePage):
     #             (By.Class, "flex-next")
     #         )).click()
     #     except NoSuchElementException:
-
-
-    #     self.browser.get(self.browser.find_element)
     
