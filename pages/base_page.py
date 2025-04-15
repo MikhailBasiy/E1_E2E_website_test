@@ -16,12 +16,12 @@ class BasePage:
             EC.visibility_of_all_elements_located((self.wait_by, self.wait_value))
         )
 
-    def find(self, timeout, by, value):
-        return WebDriverWait(self.browser, timeout).until(
-            EC.visibility_of_element_located((by, value))
-        )
+    # def find(self, timeout, by, value):
+    #     return WebDriverWait(self.browser, timeout).until(
+    #         EC.visibility_of_element_located((by, value))
+    #     )
 
-    def find_all(self, timeout, by, value):
-        return WebDriverWait(self.browser, timeout).until(
-            EC.visibility_of_all_elements_located((by, value))
-        )
+    # def find_all(self, timeout, by, value):
+    #     return WebDriverWait(self.browser, timeout).until(
+    #         EC.visibility_of_all_elements_located((by, value))
+    #     )

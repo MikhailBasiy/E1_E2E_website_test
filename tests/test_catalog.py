@@ -9,7 +9,7 @@ def test_open_catalog(browser):
 def test_catalog_not_empty(browser):
     catalog = CatalogPage(browser)
     catalog.open()
-    assert len(catalog.get_catalog_items()) > 0
+    assert len(catalog.get_items_data()) > 0
 
 
 # def test_active_color():
