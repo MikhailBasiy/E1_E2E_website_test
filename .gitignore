@@ -1,3 +1,4 @@
 .env
 /docs/.obsidian
 __pycache__
+pyproject.toml

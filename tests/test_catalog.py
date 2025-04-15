@@ -12,6 +12,5 @@ def test_catalog_not_empty(browser):
     assert len(catalog.get_catalog_items()) > 0
 
 
-
 # def test_active_color():
 #     return
