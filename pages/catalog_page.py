@@ -41,25 +41,25 @@ class CatalogPage(BasePage):
             title = item.find_element(
                 By.XPATH, ".//img[contains(@class, 'img-responsive')]"
             ).get_attribute("title")
-            logger.debug(f"title is {title}")
+            # logger.debug(f"title is {title}")
             prices = item.find_elements(
                 By.XPATH,
                 ".//span[@class='price_value']",
             )
             price, price_discount = [re.sub(r"/D", "", el.text) for el in prices]
-            logger.debug(f"price is {price}")
-            logger.debug(f"price_discount is {price_discount}")
+            # logger.debug(f"price is {price}")
+            # logger.debug(f"price_discount is {price_discount}")
 
             href = item.find_element(
                 By.XPATH, ".//div[@class='item-title']/a"
             ).get_attribute("href")
-            logger.debug(f"href is {href}")
+            # logger.debug(f"href is {href}")
             color_active = item.find_element(
                 By.XPATH,
                 ".//ul[@class='list_values_wrapper']/li[@class='item active']/i",
             ).get_attribute("title")
             color_active = re.sub("Цвет корпуса: ", "", color_active)
-            logger.debug(f"color_active is {color_active}")
+            # logger.debug(f"color_active is {color_active}")
 
             i = Item(title, href, price, price_discount, color_active)
             items_lst.append(i)
