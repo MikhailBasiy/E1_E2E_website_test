@@ -14,6 +14,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from pages.base_page import BasePage
 from logging_settings import get_logger
+from models import Item
 
 
 logger = get_logger(__name__)
@@ -30,10 +31,7 @@ class CatalogPage(BasePage):
         )
 
     def get_items_data(self):
-        Item = namedtuple(
-            "Item", ["title", "href", "price", "price_discount", "color_active"]
-        )
-        items_lst = []
+        items_data: list[namedtuple] = []
         items = self.browser.find_elements(
             By.XPATH, "//div[contains(@class, 'inner_content')]"
         )
@@ -62,8 +60,8 @@ class CatalogPage(BasePage):
             # logger.debug(f"color_active is {color_active}")
 
             i = Item(title, href, price, price_discount, color_active)
-            items_lst.append(i)
-        return items_lst
+            items_data.append(i)
+        return items_data
 
     # def next_page(self):
     #     try:

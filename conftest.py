@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+from collections import namedtuple
+from pages.catalog_page import CatalogPage
 
 
 @pytest.fixture(scope="session")
@@ -15,3 +17,9 @@ def browser():
     browser = webdriver.Chrome(options=options)
     yield browser
     browser.quit()
+
+@pytest.fixture(scope="session")
+def items_data():
+    catalog_page = CatalogPage(browser)
+    items_data: list[namedtuple] = catalog_page.get_items_data()
+    return items_data

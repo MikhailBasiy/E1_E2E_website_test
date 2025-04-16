@@ -10,16 +10,16 @@ def test_open_catalog(browser):
     catalog.open()
 
 
-def test_catalog_not_empty(browser):
+def test_catalog_not_empty(browser, items_data):
     catalog = CatalogPage(browser)
     catalog.open()
-    assert len(catalog.get_items_data()) > 0
+    assert len(items_data) > 0
 
 
-def test_catalog_items_have_prices(browser):
+def test_catalog_items_have_prices(browser, items_data):
     catalog = CatalogPage(browser)
     catalog.open()
-    assert all([item.price for item in catalog.get_items_data()])
+    assert all([item.price for item in items_data])
 
 
 # def test_active_color():
