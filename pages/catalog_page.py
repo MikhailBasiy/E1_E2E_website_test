@@ -7,15 +7,13 @@ from selenium.common.exceptions import (
     TimeoutException,
     WebDriverException,
 )
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from pages.base_page import BasePage
 from logging_settings import get_logger
-from models import Item
-
+from models import CatalogItem
+from pages.base_page import BasePage
 
 logger = get_logger(__name__)
 
@@ -59,7 +57,7 @@ class CatalogPage(BasePage):
             color_active = re.sub("Цвет корпуса: ", "", color_active)
             # logger.debug(f"color_active is {color_active}")
 
-            i = Item(title, href, price, price_discount, color_active)
+            i = CatalogItem(title, href, price, price_discount, color_active)
             items_data.append(i)
         return items_data
 

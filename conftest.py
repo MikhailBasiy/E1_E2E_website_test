@@ -1,7 +1,10 @@
+from collections import namedtuple
+
 import pytest
 from selenium import webdriver
-from collections import namedtuple
+
 from pages.catalog_page import CatalogPage
+from pages.product_card_page import ProductCardPage
 
 
 @pytest.fixture(scope="session")
@@ -18,12 +21,18 @@ def browser():
 
 
 @pytest.fixture(scope="session")
-def items_data(browser):
+def catalog_items(browser):
     catalog_page = CatalogPage(browser)
-    items_data: list[namedtuple] = catalog_page.get_items_data()
-    return items_data
+    catalog_items: list[namedtuple] = catalog_page.get_items_data()
+    return catalog_items
 
 
 @pytest.fixture()
-def product_url(request, items_data):
-    return items_data[request.param].href
+def catalog_item(request, catalog_items):
+    return catalog_items[request.param]
+
+
+# @pytest.fixture(scope="session")
+# def product_data():
+#     product_page = ProductCardPage()
+#     return product_page.get_product_data()
